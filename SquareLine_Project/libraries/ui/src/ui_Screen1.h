@@ -18,15 +18,18 @@ extern lv_obj_t * ui_Title;
 extern lv_obj_t * ui_SpeedVal;
 extern lv_obj_t * ui_SpeedBar;
 extern lv_obj_t * ui_MPH_Label;
-extern lv_obj_t * ui_TempArc;
-extern lv_obj_t * ui_MPH_Label2;
+extern lv_obj_t * ui_AccTempArc;
+extern lv_obj_t * ui_AccTempValue;
 extern lv_obj_t * ui_Accumulator_Title;
-extern lv_obj_t * ui_TextArea1;
-extern lv_obj_t * ui_Label5;
-extern lv_obj_t * ui_SpeedBar1;
-extern lv_obj_t * ui_SpeedBar2;
-extern lv_obj_t * ui_Label1;
-extern lv_obj_t * ui_Label2;
+extern lv_obj_t * ui_ErrorLogText;
+extern lv_obj_t * ui_ErrorLogLabel;
+extern lv_obj_t * ui_BrakeBar;
+extern lv_obj_t * ui_GasBar;
+extern lv_obj_t * ui_GasLabel;
+extern lv_obj_t * ui_BrakeLabel;
+extern lv_obj_t * ui_BatteryArc;
+extern lv_obj_t * ui_BatteryVal;
+extern lv_obj_t * ui_BatteryTitle;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus

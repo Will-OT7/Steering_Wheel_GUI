@@ -1,6 +1,10 @@
 #include <lvgl.h>
 #include <TFT_eSPI.h>
 #include <ui.h>
+extern "C"{
+    #include "Dash_disp.h"
+}
+
 
 /*Don't forget to set Sketchbook location in File/Preferences to the path of your UI project (the parent foder of this INO file)*/
 
@@ -104,12 +108,14 @@ void setup()
 
 
     ui_init();
+    dashboard_init();
 
     Serial.println( "Setup done" );
 }
 
 void loop()
 {
+    dashboard_update();
     lv_timer_handler(); /* let the GUI do its work */
     delay(5);
 }
