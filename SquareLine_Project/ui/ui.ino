@@ -1,6 +1,7 @@
 #include <lvgl.h>
 #include <TFT_eSPI.h>
 #include <ui.h>
+#include "vehicle_can.h"
 extern "C"{
     #include "Dash_disp.h"
 }
@@ -67,6 +68,33 @@ void my_touchpad_read( lv_indev_drv_t * indev_driver, lv_indev_data_t * data )
     }
 }
 
+//Pushbuttons
+#define BTN_NEXT  2
+#define BTN_PREV  3
+
+void handle_buttons(){
+    static bool last_next = HIGH;
+    static bool last_prev = HIGH;
+
+    bool next = digitalRead(BTN_NEXT);
+    bool prev = digitalRead(BTN_PREV);
+
+    // NEXT button
+    if (last_next == HIGH && next == LOW) {
+        current_screen = (current_screen + 1) % total_screens;
+        load_screen(current_screen);
+    }
+
+    // PREV button
+    if (last_prev == HIGH && prev == LOW) {
+        current_screen = (current_screen - 1 + total_screens) % total_screens;
+        load_screen(current_screen);
+    }
+
+    last_next = next;
+    last_prev = prev;
+}
+
 void setup()
 {
     Serial.begin( 115200 ); /* prepare for possible serial debug */
@@ -76,7 +104,8 @@ void setup()
 
     Serial.println( LVGL_Arduino );
     Serial.println( "I am LVGL_Arduino" );
-
+    pinMode(BTN_NEXT, INPUT_PULLUP);
+    pinMode(BTN_PREV, INPUT_PULLUP);
     lv_init();
 
 #if LV_USE_LOG != 0
@@ -109,12 +138,13 @@ void setup()
 
     ui_init();
     dashboard_init();
-
+    vehicleCanSetup();
     Serial.println( "Setup done" );
 }
 
 void loop()
 {
+    vehicleCanTask();
     dashboard_update();
     lv_timer_handler(); /* let the GUI do its work */
     delay(5);

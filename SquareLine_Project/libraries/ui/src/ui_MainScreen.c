@@ -5,7 +5,7 @@
 
 #include "ui.h"
 
-lv_obj_t * ui_Screen1 = NULL;
+lv_obj_t * ui_MainScreen = NULL;
 lv_obj_t * ui_Title = NULL;
 lv_obj_t * ui_SpeedVal = NULL;
 lv_obj_t * ui_SpeedBar = NULL;
@@ -26,20 +26,20 @@ lv_obj_t * ui_BatteryTitle = NULL;
 
 // build funtions
 
-void ui_Screen1_screen_init(void)
+void ui_MainScreen_screen_init(void)
 {
-    ui_Screen1 = lv_obj_create(NULL);
-    lv_obj_clear_flag(ui_Screen1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    ui_MainScreen = lv_obj_create(NULL);
+    lv_obj_clear_flag(ui_MainScreen, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-    ui_Title = lv_label_create(ui_Screen1);
+    ui_Title = lv_label_create(ui_MainScreen);
     lv_obj_set_width(ui_Title, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Title, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Title, 0);
     lv_obj_set_y(ui_Title, -221);
     lv_obj_set_align(ui_Title, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Title, "Test Display");
+    lv_label_set_text(ui_Title, "Main Display");
 
-    ui_SpeedVal = lv_label_create(ui_Screen1);
+    ui_SpeedVal = lv_label_create(ui_MainScreen);
     lv_obj_set_width(ui_SpeedVal, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_SpeedVal, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_SpeedVal, 0);
@@ -48,7 +48,7 @@ void ui_Screen1_screen_init(void)
     lv_label_set_text(ui_SpeedVal, "100");
     lv_obj_set_style_text_font(ui_SpeedVal, &lv_font_montserrat_48, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_SpeedBar = lv_bar_create(ui_Screen1);
+    ui_SpeedBar = lv_bar_create(ui_MainScreen);
     lv_bar_set_value(ui_SpeedBar, 70, LV_ANIM_OFF);
     lv_bar_set_start_value(ui_SpeedBar, 0, LV_ANIM_OFF);
     lv_obj_set_width(ui_SpeedBar, 150);
@@ -64,7 +64,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_bg_grad_color(ui_SpeedBar, lv_color_hex(0xFD0707), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_grad_dir(ui_SpeedBar, LV_GRAD_DIR_HOR, LV_PART_INDICATOR | LV_STATE_DEFAULT);
 
-    ui_MPH_Label = lv_label_create(ui_Screen1);
+    ui_MPH_Label = lv_label_create(ui_MainScreen);
     lv_obj_set_width(ui_MPH_Label, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_MPH_Label, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_MPH_Label, 0);
@@ -73,7 +73,7 @@ void ui_Screen1_screen_init(void)
     lv_label_set_text(ui_MPH_Label, "MPH");
     lv_obj_set_style_text_font(ui_MPH_Label, &lv_font_montserrat_18, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_AccTempArc = lv_arc_create(ui_Screen1);
+    ui_AccTempArc = lv_arc_create(ui_MainScreen);
     lv_obj_set_width(ui_AccTempArc, 81);
     lv_obj_set_height(ui_AccTempArc, 80);
     lv_obj_set_x(ui_AccTempArc, -86);
@@ -94,7 +94,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_align(ui_AccTempValue, LV_ALIGN_CENTER);
     lv_label_set_text(ui_AccTempValue, "50°");
 
-    ui_Accumulator_Title = lv_label_create(ui_Screen1);
+    ui_Accumulator_Title = lv_label_create(ui_MainScreen);
     lv_obj_set_width(ui_Accumulator_Title, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Accumulator_Title, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Accumulator_Title, -88);
@@ -102,7 +102,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_align(ui_Accumulator_Title, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Accumulator_Title, "Accumulator");
 
-    ui_ErrorLogText = lv_textarea_create(ui_Screen1);
+    ui_ErrorLogText = lv_textarea_create(ui_MainScreen);
     lv_obj_set_width(ui_ErrorLogText, 150);
     lv_obj_set_height(ui_ErrorLogText, 70);
     lv_obj_set_x(ui_ErrorLogText, -78);
@@ -110,7 +110,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_align(ui_ErrorLogText, LV_ALIGN_CENTER);
     lv_textarea_set_placeholder_text(ui_ErrorLogText, "Placeholder...");
 
-    ui_ErrorLogLabel = lv_label_create(ui_Screen1);
+    ui_ErrorLogLabel = lv_label_create(ui_MainScreen);
     lv_obj_set_width(ui_ErrorLogLabel, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_ErrorLogLabel, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_ErrorLogLabel, -78);
@@ -118,7 +118,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_align(ui_ErrorLogLabel, LV_ALIGN_CENTER);
     lv_label_set_text(ui_ErrorLogLabel, "Error Log");
 
-    ui_BrakeBar = lv_bar_create(ui_Screen1);
+    ui_BrakeBar = lv_bar_create(ui_MainScreen);
     lv_bar_set_value(ui_BrakeBar, 25, LV_ANIM_OFF);
     lv_bar_set_start_value(ui_BrakeBar, 0, LV_ANIM_OFF);
     lv_obj_set_width(ui_BrakeBar, 150);
@@ -133,7 +133,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_bg_color(ui_BrakeBar, lv_color_hex(0xFC0000), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_BrakeBar, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
 
-    ui_GasBar = lv_bar_create(ui_Screen1);
+    ui_GasBar = lv_bar_create(ui_MainScreen);
     lv_bar_set_value(ui_GasBar, 25, LV_ANIM_OFF);
     lv_bar_set_start_value(ui_GasBar, 0, LV_ANIM_OFF);
     lv_obj_set_width(ui_GasBar, 150);
@@ -148,7 +148,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_bg_color(ui_GasBar, lv_color_hex(0xFFFFFF), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_GasBar, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
 
-    ui_GasLabel = lv_label_create(ui_Screen1);
+    ui_GasLabel = lv_label_create(ui_MainScreen);
     lv_obj_set_width(ui_GasLabel, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_GasLabel, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_GasLabel, 119);
@@ -156,7 +156,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_align(ui_GasLabel, LV_ALIGN_CENTER);
     lv_label_set_text(ui_GasLabel, "Gas");
 
-    ui_BrakeLabel = lv_label_create(ui_Screen1);
+    ui_BrakeLabel = lv_label_create(ui_MainScreen);
     lv_obj_set_width(ui_BrakeLabel, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_BrakeLabel, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_BrakeLabel, 79);
@@ -164,7 +164,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_align(ui_BrakeLabel, LV_ALIGN_CENTER);
     lv_label_set_text(ui_BrakeLabel, "Brake");
 
-    ui_BatteryArc = lv_arc_create(ui_Screen1);
+    ui_BatteryArc = lv_arc_create(ui_MainScreen);
     lv_obj_set_width(ui_BatteryArc, 81);
     lv_obj_set_height(ui_BatteryArc, 80);
     lv_obj_set_x(ui_BatteryArc, 86);
@@ -186,7 +186,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_align(ui_BatteryVal, LV_ALIGN_CENTER);
     lv_label_set_text(ui_BatteryVal, "50%");
 
-    ui_BatteryTitle = lv_label_create(ui_Screen1);
+    ui_BatteryTitle = lv_label_create(ui_MainScreen);
     lv_obj_set_width(ui_BatteryTitle, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_BatteryTitle, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_BatteryTitle, 88);
@@ -196,12 +196,12 @@ void ui_Screen1_screen_init(void)
 
 }
 
-void ui_Screen1_screen_destroy(void)
+void ui_MainScreen_screen_destroy(void)
 {
-    if(ui_Screen1) lv_obj_del(ui_Screen1);
+    if(ui_MainScreen) lv_obj_del(ui_MainScreen);
 
     // NULL screen variables
-    ui_Screen1 = NULL;
+    ui_MainScreen = NULL;
     ui_Title = NULL;
     ui_SpeedVal = NULL;
     ui_SpeedBar = NULL;

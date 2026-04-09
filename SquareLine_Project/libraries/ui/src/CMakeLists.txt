@@ -1,5 +1,7 @@
-SET(SOURCES ui_Screen1.c
-    ui_Screen2.c
+SET(SOURCES ui_MainScreen.c
+    ui_TireScreen.c
+    ui_SimpleSpeedScreen.c
+    ui_ErrorScreen.c
     ui.c
     ui_comp_hook.c
     ui_helpers.c

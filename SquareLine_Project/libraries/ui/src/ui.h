@@ -27,8 +27,10 @@ extern "C" {
 
 ///////////////////// SCREENS ////////////////////
 
-#include "ui_Screen1.h"
-#include "ui_Screen2.h"
+#include "ui_MainScreen.h"
+#include "ui_TireScreen.h"
+#include "ui_SimpleSpeedScreen.h"
+#include "ui_ErrorScreen.h"
 
 ///////////////////// VARIABLES ////////////////////
 

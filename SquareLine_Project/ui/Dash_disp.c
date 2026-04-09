@@ -1,12 +1,10 @@
 #include "Dash_disp.h"
+#include "vehicle_can.h"
 #include "ui.h"
 #include <stdio.h>
 #include <math.h>
 
-/* Your variables */
-/*static float temperature = 72.5;
-static int speed = 35;
-static int battery = 80;*/
+
 
 void dashboard_init() {
     /*
@@ -47,12 +45,14 @@ int get_sim_brake(){
 
 void dashboard_update() {
     char buf[16];
-
+    
+    float speed_kph = speed_kph_x10 / 10.0;
+    float speed_mph = speed_kph * 0.621371;
     float temperature = get_sim_temp();
-    int speed = get_sim_speed();
-    int gas = get_sim_gas();
-    int brake = get_sim_brake();
-    float battery = get_sim_battery();
+    int speed = (int)speed_mph;
+    int gas = (int)throttle_pct;
+    int brake = (int)brake_pct;
+    float battery = soc_pct;
 
     // Update Accumulator temperature label
     sprintf(buf, "%.1f\u00B0F", temperature);
@@ -73,7 +73,7 @@ void dashboard_update() {
     sprintf(buf, "%d", speed);
     lv_label_set_text(ui_SpeedVal, buf);
     //Update Speed Bar
-    lv_bar_set_value(ui_SpeedBar, (int)(speed/1.5), LV_ANIM_OFF);
+    lv_bar_set_value(ui_SpeedBar, (int)(speed/1.86), LV_ANIM_OFF);
 
     //Update Gas Bar
     lv_bar_set_value(ui_GasBar, gas, LV_ANIM_OFF);
